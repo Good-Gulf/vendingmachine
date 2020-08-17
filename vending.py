@@ -57,6 +57,7 @@ if __name__ == '__main__':
 
     # print(machine.slots, machine.slot_depth)
 
-    print(products.keys())
-    Prod2Slot = {'productName': (machine.slots, machine.slot_depth)}
-    print(Prod2Slot)
+    prodlist = list(products.keys())
+    # Prod2Slot = {productName : (machine.slots, machine.slot_depth)}
+    # print(Prod2Slot)
+    print(prodlist[2])
