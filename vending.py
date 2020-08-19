@@ -29,6 +29,14 @@ class Machine:
         pass
 
     def load_products(self, assortment: Assortment) -> None:
+        valulist = list(products.values())
+        print(products)
+        for count_slot in range(0,machine.slots):
+            for count_slot_depth in range(0,machine.slot_depth):
+                print(count_slot, count_slot_depth)
+        machine.slot_depth=machine.slot_depth-valulist[count].quantity
+        print(1, valulist[2].name, valulist[2].price, machine.slot_depth)
+
         pass
 
     def load_coins(self, coins: Coins) -> None:
@@ -54,10 +62,18 @@ if __name__ == '__main__':
         ProductName("mars"): Product(name=ProductName("mars"), quantity=5, price=Decimal('1.9')),
         ProductName("orbit"): Product(name=ProductName("orbit"), quantity=6, price=Decimal('2.3')),
     }
-
+    machine.load_products(products)
     # print(machine.slots, machine.slot_depth)
+    print('_____________')
 
-    prodlist = list(products.keys())
+    # cena = products.p
     # Prod2Slot = {productName : (machine.slots, machine.slot_depth)}
-    # print(Prod2Slot)
-    print(prodlist[2])
+    # print(1, products)
+    # print(prodlist)
+    # valulist[2].quantity=2
+    # valulist[2].price = 2.50
+    # machine.slot_depth=machine.slot_depth-5 operacje na slotach :)
+    # print(valulist[2].name, valulist[2].price, machine.slots, machine.slot_depth) #cena konkretnego produktu
+    # print('----------------')
+    # print(Assortment)
+    # print(products.values())
