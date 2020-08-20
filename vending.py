@@ -8,7 +8,7 @@ SlotCode = typing.NewType('SlotCode', str)
 Assortment = typing.Dict[ProductName, 'Product']
 Coins = typing.Counter[Decimal]
 Menu = typing.Dict[ProductName, typing.Tuple[SlotCode, Decimal]]
-Prod2Slot = typing.Dict[ProductName, typing.Tuple['slots', 'slot_depth']]
+Prod2Slot = {}
 
 
 class MachineOverloadedException(Exception):
@@ -29,13 +29,20 @@ class Machine:
         pass
 
     def load_products(self, assortment: Assortment) -> None:
+        count = 0
         valulist = list(products.values())
         print(products)
         for count_slot in range(0,machine.slots):
             for count_slot_depth in range(0,machine.slot_depth):
                 print(count_slot, count_slot_depth)
-        machine.slot_depth=machine.slot_depth-valulist[count].quantity
+                Prod2Slot[f'{valulist[count_slot].quantity}-{valulist[count_slot].name}'] = (count_slot, count_slot_depth)
+                valulist[count_slot].quantity -= 1
+                if valulist[count_slot].quantity < 0:
+                    break
+                print(Prod2Slot)
+        # machine.slot_depth=machine.slot_depth-valulist[count].quantity
         print(1, valulist[2].name, valulist[2].price, machine.slot_depth)
+
 
         pass
 
