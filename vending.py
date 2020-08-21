@@ -29,7 +29,6 @@ class Machine:
         pass
 
     def load_products(self, assortment: Assortment) -> None:
-        count = 0
         valulist = list(products.values())
         print(products)
         for count_slot in range(0,machine.slots):
@@ -38,9 +37,9 @@ class Machine:
                 Prod2Slot[f'{valulist[count_slot].quantity}-{valulist[count_slot].name}'] = (count_slot, count_slot_depth)
                 valulist[count_slot].quantity -= 1
                 if valulist[count_slot].quantity < 0:
-                    break
-                print(Prod2Slot)
-        # machine.slot_depth=machine.slot_depth-valulist[count].quantity
+                break
+              print(Prod2Slot)
+        machine.slot_depth=machine.slot_depth-valulist[count].quantity
         print(1, valulist[2].name, valulist[2].price, machine.slot_depth)
 
 
@@ -50,6 +49,8 @@ class Machine:
         pass
 
     def get_available_products(self) -> Menu:
+        Menu[ProductName] = Prod2Slot.keys()
+        return(Menu)
         pass
 
     def choose_product(self, product_code: SlotCode, money: Coins) -> typing.Tuple[typing.Optional[Product], typing.Optional[Coins]]:
@@ -70,9 +71,10 @@ if __name__ == '__main__':
         ProductName("orbit"): Product(name=ProductName("orbit"), quantity=6, price=Decimal('2.3')),
     }
     machine.load_products(products)
+    print(Prod2Slot)
     # print(machine.slots, machine.slot_depth)
     print('_____________')
-
+    print(machine.get_available_products())
     # cena = products.p
     # Prod2Slot = {productName : (machine.slots, machine.slot_depth)}
     # print(1, products)
